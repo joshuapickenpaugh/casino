@@ -15,6 +15,7 @@ public class Casino_MAIN
         //"main" variables:
         String strUserName;   
         int intUserAccount;
+        char chrUserSelection;
         
         //create a Scanner object to read from the keyboard
 	Scanner keyboard = new Scanner(System.in);  
@@ -37,10 +38,36 @@ public class Casino_MAIN
            }
            else if (intUserAccount < 20 || intUserAccount > 1000)
            {
-               System.out.println("Please deposit between $20 and $1000");
+               System.out.println("TO REPEAT: Please deposit between $20 and $1000");
            }
         }
         while (intUserAccount < 20 || intUserAccount > 1000);
+        
+        //Game selection and user input:
+        System.out.println("Please choose your game: ");
+        System.out.println("PRESS '1' for BLACKJACK");
+        System.out.println("PRESS '2' for SLOT MACHINE");
+        System.out.println("PRESS 'Q' to QUIT");
+        
+        //accepts a char value:
+        chrUserSelection = keyboard.next().charAt(0);
+        
+        switch(chrUserSelection)
+                {
+                    case '1':
+                        Casino_BLACKJACK.BLACKJACK();
+                        break;
+                    
+                    case '2':
+                        Casino_SLOTMACHINE.SLOTMACHINE();
+                        break;
+                        
+                    case 'q':
+                    case 'Q':
+                        break;                       
+                    
+                }
+        
         
         
         
