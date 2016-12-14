@@ -16,4 +16,9 @@ public class Casino_BANK
     {
         intUserAccount += usraccnt;
     }
+    
+    public void WithdrawlFromBalance(int wthdrwl)
+    {
+        intUserAccount = intUserAccount - wthdrwl;
+    }
 }
