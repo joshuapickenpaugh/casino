@@ -14,11 +14,15 @@ public class Casino_MAIN
         
         //"main" variables:
         String strUserName;   
-        int intUserAccount;
+        int intUserDeposit;
         char chrUserSelection;
+        boolean bolDoLoopControl = true;
         
         //create a Scanner object to read from the keyboard
 	Scanner keyboard = new Scanner(System.in);  
+        
+        //Creates BANK object:
+        Casino_BANK userAccount = new Casino_BANK();
         
         //Gets user's name, and then greets the user:
         System.out.println("Please enter your name: ");
@@ -29,20 +33,22 @@ public class Casino_MAIN
         //Gets user deposit amount, sees if it is enough or too much:
         do
         {
-           intUserAccount = keyboard.nextInt();
-           if (intUserAccount >= 20 && intUserAccount <= 1000)
+           intUserDeposit = keyboard.nextInt();
+           if (intUserDeposit >= 20 && intUserDeposit <= 1000)
            {
-               Casino_BANK userAccount = new Casino_BANK(intUserAccount);
+               userAccount.SetAccountBalance(intUserDeposit);
                System.out.print("Your account has been created, starting at: $");
                System.out.println(userAccount.GetAccountBalance());
            }
-           else if (intUserAccount < 20 || intUserAccount > 1000)
+           else if (intUserDeposit < 20 || intUserDeposit > 1000)
            {
                System.out.println("TO REPEAT: Please deposit between $20 and $1000");
            }
         }
-        while (intUserAccount < 20 || intUserAccount > 1000);
+        while (intUserDeposit < 20 || intUserDeposit > 1000);
         
+        do
+        {
         //Game selection and user input:
         System.out.println("Please choose your game: ");
         System.out.println("PRESS '1' for BLACKJACK");
@@ -56,26 +62,26 @@ public class Casino_MAIN
                 {
                     case '1':
                         Casino_BLACKJACK.BLACKJACK();
+                        System.out.println("Welcome back to the lobby, I hope you enjoyed your game.");
                         break;
                     
                     case '2':
                         Casino_SLOTMACHINE.SLOTMACHINE();
+                        System.out.println("Welcome back to the lobby, I hope you enjoyed your game.");
                         break;
                         
                     case 'q':
                     case 'Q':
+                        bolDoLoopControl = false;
                         break;                       
                     
                 }
+        }while (bolDoLoopControl == true);
+        
+        System.out.print("You end your tenure at the casino with : $");
+        System.out.println(userAccount.GetAccountBalance());
         
         
-        
-        
-        
-        
-
-        
-                 
     }
     
 }
