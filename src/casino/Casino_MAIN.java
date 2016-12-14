@@ -62,12 +62,12 @@ public class Casino_MAIN
                 {
                     case '1':
                         Casino_BLACKJACK.BLACKJACK();
-                        System.out.println("Welcome back to the lobby, I hope you enjoyed your game.");
+                        System.out.println("Welcome back to the lobby.");
                         break;
                     
                     case '2':
                         Casino_SLOTMACHINE.SLOTMACHINE();
-                        System.out.println("Welcome back to the lobby, I hope you enjoyed your game.");
+                        System.out.println("Welcome back to the lobby.");
                         break;
                         
                     case 'q':
