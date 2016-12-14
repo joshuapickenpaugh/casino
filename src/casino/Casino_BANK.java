@@ -2,13 +2,8 @@ package casino;
 
 public class Casino_BANK 
 {
+    //Class variables:
     private int intUserAccount;
-    
-    //Constructor; Sets intitial account balance for player:
-    public Casino_BANK(int usraccnt)
-    {
-        intUserAccount = usraccnt;
-    }
     
     //Accessor (Getter):
     public int GetAccountBalance()
