@@ -36,7 +36,7 @@ public class Casino_MAIN
            intUserDeposit = keyboard.nextInt();
            if (intUserDeposit >= 20 && intUserDeposit <= 1000)
            {
-               userAccount.SetAccountBalance(intUserDeposit);
+               userAccount.AddToAccountBalance(intUserDeposit);
                System.out.print("Your account has been created, starting at: $");
                System.out.println(userAccount.GetAccountBalance());
            }
@@ -49,6 +49,18 @@ public class Casino_MAIN
         
         do
         {
+            //If account below $20, ask player to add to it to bring it up above $20:
+            if (userAccount.GetAccountBalance() < 20)
+            {
+                do
+                {
+                    System.out.print("Your account is below $20, it is at: ");
+                    System.out.println(userAccount.GetAccountBalance());
+                    System.out.println("Please deposit enough funds to bring it above $20.");
+                    intUserDeposit = keyboard.nextInt();
+                    userAccount.AddToAccountBalance(intUserDeposit);                    
+                }while (userAccount.GetAccountBalance() < 20);
+            }
         //Game selection and user input:
         System.out.println("Please choose your game: ");
         System.out.println("PRESS '1' for BLACKJACK");
