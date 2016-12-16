@@ -17,17 +17,29 @@ public class Casino_SLOTMACHINE
     
     private static int intDoubleProfit;
     private static int intTripleProfit;
+    private static int intProfitTOTAL; 
+    
+    //Player wager:
+    private static int intUserSlotsWager;
     
     //Main entry point for the slot machine game:
     public static void SLOTMACHINE()
     {
         System.out.println("WELCOME TO THE SLOTS.");
+        
+        //create a Scanner object to read from the keyboard:
+        Scanner keyboard = new Scanner(System.in); 
+        
+        //Asks player how much they wish to wager:
+        System.out.println("How much do you wish to wager?");       
+        intUserSlotsWager = keyboard.nextInt();
+        Casino_BANK.WithdrawlFromBalance(intUserSlotsWager);        
+        System.out.print("You have waged $" + intUserSlotsWager + ", with a total player account of $");
+        System.out.println(Casino_BANK.GetAccountBalance());        
+        
         do
         {
             System.out.println("Press 1 to pull the lever, press 2 to QUIT:");
-        
-            //create a Scanner object to read from the keyboard
-	    Scanner keyboard = new Scanner(System.in); 
             intUserChoice = keyboard.nextInt();
         
             if (intUserChoice == 1)
@@ -57,12 +69,17 @@ public class Casino_SLOTMACHINE
                System.out.println();
                
                //Compare fruite types and if two of a kind, double wager and return profit:
-               intDoubleProfit = CompareTwoOfAKindAndDoubleWager(strFruit1,strFruit2, strFruit3);      
+               intDoubleProfit = CompareTwoOfAKindAndDoubleWager(strFruit1,strFruit2, strFruit3, intUserSlotsWager);      
         
                //Compare fruite types and if three of a kind, triple wager and return profit:
-               intTripleProfit = CompareThreeOfAKindAndTripleWager(strFruit1, strFruit2, strFruit3);
+               intTripleProfit = CompareThreeOfAKindAndTripleWager(strFruit1, strFruit2, strFruit3, intUserSlotsWager);
                
-               //Add the intDoubleProfit and intTripleProfit to the userAccount in BANK:
+               //Accumulate the double and triple profits, if any:
+               intProfitTOTAL = intDoubleProfit + intTripleProfit;
+
+               //Add the intDoubleProfit or intTripleProfit to the userAccount in BANK:
+               Casino_BANK.AddToAccountBalance(intDoubleProfit);
+               Casino_BANK.AddToAccountBalance(intTripleProfit);
                
             }   
             
@@ -115,44 +132,44 @@ public class Casino_SLOTMACHINE
         return fruit;
     }
     
-    public static int CompareTwoOfAKindAndDoubleWager(String f1, String f2, String f3)
-    {
-        int wager = 0;
+    public static int CompareTwoOfAKindAndDoubleWager(String f1, String f2, String f3, int usrsltswgr)
+    {        
+        int profit = 0;
         
         //Compare fruit types (if two of a kind, double wager):
         if (f1.equals(f2))
         {
             System.out.println("***TWO OF A KIND, WAGER DOUBLED***");
-            //Double the wager:
+            profit = usrsltswgr * 2;
         }
         else if (f1.equals(f3))
         {
             System.out.println("***TWO OF A KIND, WAGER DOUBLED***");     
-            //Double the wager:
+            profit = usrsltswgr * 2;
         }
         else if (f2.equals(f3))
         {
             System.out.println("***TWO OF A KIND, WAGER DOUBLED***");  
-            //Double the wager:
+            profit = usrsltswgr * 2;
         }      
         
         //return the profit:
-        return wager;
+        return profit;
            
     }
     
-    public static int CompareThreeOfAKindAndTripleWager(String f1, String f2, String f3)
-    {
-        int wager = 0;
+    public static int CompareThreeOfAKindAndTripleWager(String f1, String f2, String f3, int usrsltswgr)
+    {        
+        int profit = 0;
         
         if (f3.equals(f1.equals(f2)))
         {
             System.out.println("!!!!!!!!!THREE OF A KIND, WAGER TRIPLED!!!!!!!!!");   
-            //Triple the wager:
+            profit = usrsltswgr * 3;
         }    
         
         //Return the profit:
-        return wager;
+        return profit;
     }
     
 }
