@@ -3,21 +3,21 @@ package casino;
 public class Casino_BANK 
 {
     //Class variables:
-    private int intUserAccount;
+    private static int intUserAccount;
     
     //Accessor (Getter):
-    public int GetAccountBalance()
+    public static int GetAccountBalance()
     {
         return intUserAccount;
     }
     
     //Mutator (Setter); Adds winnings to user account:
-    public void SetAccountBalance(int usraccnt)
+    public static void AddToAccountBalance(int usraccnt)
     {
         intUserAccount += usraccnt;
     }
     
-    public void WithdrawlFromBalance(int wthdrwl)
+    public static void WithdrawlFromBalance(int wthdrwl)
     {
         intUserAccount = intUserAccount - wthdrwl;
     }
