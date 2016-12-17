@@ -9,13 +9,13 @@ public class Casino_BANK {
         return intUserAccount;
     }
 
-    //Mutator (Setter); Adds winnings to user account:
+    //Adds winnings to user account:
     public static void AddToAccountBalance(int usraccnt) {
         intUserAccount += usraccnt;
     }
 
-    //Mutator (Setter); withdrawls funds:
+    //Withdrawls funds:
     public static void WithdrawlFromBalance(int wthdrwl) {
-        intUserAccount = intUserAccount - wthdrwl;
+        intUserAccount -= wthdrwl;
     }
 }
