@@ -29,7 +29,8 @@ public class Casino_SLOTMACHINE {
         System.out.println("How much do you wish to wager?");
         intUserSlotsWager = keyboard.nextInt();
         Casino_BANK.WithdrawlFromBalance(intUserSlotsWager);
-        System.out.print("You have waged $" + intUserSlotsWager + ", with a remaining player account of $");
+        System.out.print("You have waged $" + intUserSlotsWager + ", with a " +
+            "remaining player account of $");
         System.out.println(Casino_BANK.GetAccountBalance());
 
         do {
@@ -40,13 +41,16 @@ public class Casino_SLOTMACHINE {
                 intDoubleProfit = 0;
                 intTripleProfit = 0;
 
-                //Gets random number between 0 and 6 for Column 1, assigns to variable:
+                //Gets random number between 0 and 6 for Column 1, assigns to 
+                //variable:
                 intRandNum1 = GetRandomNumber();
 
-                //Gets random number between 0 and 6 for Column 2, assigns to variable:
+                //Gets random number between 0 and 6 for Column 2, assigns to 
+                //variable:
                 intRandNum2 = GetRandomNumber();
 
-                //Gets random number between 0 and 6 for Column 3, assigns to variable:
+                //Gets random number between 0 and 6 for Column 3, assigns to 
+                //variable:
                 intRandNum3 = GetRandomNumber();
 
                 //Converts random number to assigned fruit: 
@@ -61,16 +65,21 @@ public class Casino_SLOTMACHINE {
 
                 System.out.println();
 
-                //Compare fruite types and if two of a kind, double wager and return profit:
-                intDoubleProfit = CompareTwoOfAKindAndDoubleWager(strFruit1, strFruit2, strFruit3, intUserSlotsWager);
+                //Compare fruite types and if two of a kind, double wager and 
+                //return profit:
+                intDoubleProfit = CompareTwoOfAKindAndDoubleWager(strFruit1,
+                    strFruit2, strFruit3, intUserSlotsWager);
 
-                //Compare fruite types and if three of a kind, triple wager and return profit:
-                intTripleProfit = CompareThreeOfAKindAndTripleWager(strFruit1, strFruit2, strFruit3, intUserSlotsWager);
+                //Compare fruite types and if three of a kind, triple wager and 
+                //return profit:
+                intTripleProfit = CompareThreeOfAKindAndTripleWager(strFruit1,
+                    strFruit2, strFruit3, intUserSlotsWager);
 
                 //Accumulate the double and triple profits, if any:
-                intProfitTOTAL = intDoubleProfit + intTripleProfit;
+                intProfitTOTAL = intProfitTOTAL + intDoubleProfit + intTripleProfit;
 
-                //Add the intDoubleProfit or intTripleProfit to the userAccount in BANK:
+                //Add the intDoubleProfit or intTripleProfit to the userAccount 
+                //in BANK:
                 Casino_BANK.AddToAccountBalance(intDoubleProfit);
                 Casino_BANK.AddToAccountBalance(intTripleProfit);
 
@@ -78,10 +87,11 @@ public class Casino_SLOTMACHINE {
 
         } while (intUserChoice == 1);
 
-        System.out.println("You are now leaving the slots. You waged $" + intUserSlotsWager +
+        System.out.println("You are now leaving the slots. You waged $" +
+            intUserSlotsWager +
             ", and your winnings are: $" + intProfitTOTAL);
         System.out.print("You are leaving with an account balance of: $");
-        System.out.println(Casino_BANK.GetAccountBalance()); 
+        System.out.println(Casino_BANK.GetAccountBalance());
     }
 
     //Random number generator:
@@ -125,7 +135,8 @@ public class Casino_SLOTMACHINE {
         return fruit;
     }
 
-    public static int CompareTwoOfAKindAndDoubleWager(String f1, String f2, String f3, int usrsltswgr) {
+    public static int CompareTwoOfAKindAndDoubleWager(String f1, String f2,
+        String f3, int usrsltswgr) {
         int profit = 0;
 
         //Compare fruit types (if two of a kind, double wager):
@@ -147,7 +158,8 @@ public class Casino_SLOTMACHINE {
 
     }
 
-    public static int CompareThreeOfAKindAndTripleWager(String f1, String f2, String f3, int usrsltswgr) {
+    public static int CompareThreeOfAKindAndTripleWager(String f1, String f2,
+        String f3, int usrsltswgr) {
         int profit = 0;
 
         if (f3.equals(f1.equals(f2))) {
