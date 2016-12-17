@@ -9,7 +9,6 @@ import java.util.Scanner;
 
 public class Casino_MAIN {
     public static void main(String[] args) {
-
         //"main" variables:
         String strUserName;
         int intUserDeposit;
@@ -96,7 +95,6 @@ public class Casino_MAIN {
         //Final goodbye to player when leaves casino simulation:
         System.out.print("You end your tenure at the casino with : $");
         System.out.println(Casino_BANK.GetAccountBalance());
-
     }
 
 }
