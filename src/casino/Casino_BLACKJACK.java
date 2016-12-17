@@ -74,16 +74,17 @@ public class Casino_BLACKJACK {
 
         } while (intUserChoice2 == 1);
 
+        //Final goodbye to player when leaves the blackjack simulation:
         System.out.println("You are now leaving the blackjack table. You waged " +
             "$" + intUserBlackJackWagerTOTAL +
             ", and your winnings are: $" + intProfitTOTAL);
         System.out.print("You are leaving with an account balance of: $");
         System.out.println(Casino_BANK.GetAccountBalance());
-
-
     }
 
+    //Dice roll method:
     public static int RollDice() {
+        
         int dice1;
         int dice2;
         int total;
@@ -102,6 +103,7 @@ public class Casino_BLACKJACK {
         return total;
     }
 
+    //Method to find out who wins (player or computer), and award any profit:
     public static void WhoWins(int plyr, int cmptr) {
 
         int lclttl;
