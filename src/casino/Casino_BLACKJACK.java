@@ -6,8 +6,8 @@ public class Casino_BLACKJACK {
     private static int intComputerTotal = 0;
     private static int intPlayerTotal = 0;
     private static int intUserChoice = 0;
-    private static int intUserChoice2;    
-    private static int intProfitTOTAL;    
+    private static int intUserChoice2;
+    private static int intProfitTOTAL;
     //Player wager:
     public static int intUserBlackJackWager;
     public static int intUserBlackJackWagerTOTAL;
@@ -15,7 +15,7 @@ public class Casino_BLACKJACK {
     public static void BLACKJACK() {
 
         System.out.println("WELCOME TO BLACKJACK.");
-                    
+
         do {
             //Variable declaration:
             int intPlayerPoints = 0;
@@ -23,18 +23,20 @@ public class Casino_BLACKJACK {
 
             //create a Scanner object to read from the keyboard
             Scanner keyboard = new Scanner(System.in);
-            
+
             //Asks player how much they wish to wager:
             System.out.println("How much do you wish to wager?");
             intUserBlackJackWager = keyboard.nextInt();
             intUserBlackJackWagerTOTAL += intUserBlackJackWager;
             Casino_BANK.WithdrawlFromBalance(intUserBlackJackWager);
-            System.out.print("You have waged $" + intUserBlackJackWager + ", with a remaining player account of $");
+            System.out.print("You have waged $" + intUserBlackJackWager + ", " +
+                "with a remaining player account of $");
             System.out.println(Casino_BANK.GetAccountBalance());
 
 
             do {
-                //Computer rolls the dice before player is asked if they wish to roll:
+                //Computer rolls the dice before player is asked if they wish 
+                //to roll:
                 intComputerPoints = RollDice();
                 intComputerTotal += intComputerPoints;
 
@@ -55,9 +57,11 @@ public class Casino_BLACKJACK {
             } while (intPlayerTotal < 21);
 
             System.out.println("You have a total of " + intPlayerTotal + ".");
-            System.out.println("The computer has a total of " + intComputerTotal + ".");
+            System.out.println("The computer has a total of " + intComputerTotal +
+                ".");
 
-            //Method to compare the totals, annouce the winner, add profit accountBalance to player if they win:
+            //Method to compare the totals, annouce the winner, add profit 
+            //accountBalance to player if they win:
             WhoWins(intPlayerTotal, intComputerTotal);
 
             //Reset player and computer totals:
@@ -69,8 +73,9 @@ public class Casino_BLACKJACK {
             intUserChoice2 = keyboard.nextInt();
 
         } while (intUserChoice2 == 1);
-        
-        System.out.println("You are now leaving the blackjack table. You waged $" + intUserBlackJackWagerTOTAL +
+
+        System.out.println("You are now leaving the blackjack table. You waged " +
+            "$" + intUserBlackJackWagerTOTAL +
             ", and your winnings are: $" + intProfitTOTAL);
         System.out.print("You are leaving with an account balance of: $");
         System.out.println(Casino_BANK.GetAccountBalance());
@@ -98,18 +103,21 @@ public class Casino_BLACKJACK {
     }
 
     public static void WhoWins(int plyr, int cmptr) {
-        
-        int lclttl; 
-        
-        //Player wins if they are less than or equal to 21, and great than computer's score:
+
+        int lclttl;
+
+        //Player wins if they are less than or equal to 21, and great 
+        //than computer's score:
         if (plyr <= 21 && plyr > cmptr) {
-            System.out.println("The HUMAN wins! Your profit is double your wager!");
+            System.out.println("The HUMAN wins! Your profit is double your " +
+                "wager!");
             lclttl = intUserBlackJackWager * 2;
             intProfitTOTAL += lclttl;
             Casino_BANK.AddToAccountBalance(lclttl);
         }
 
-        //Computer wins if it is less than or equal to 21 and greater than the player:
+        //Computer wins if it is less than or equal to 21 and greater than 
+        //the player:
         if (cmptr <= 21 && cmptr > plyr) {
             System.out.println("The COMPUTER wins!");
         }
@@ -126,12 +134,15 @@ public class Casino_BLACKJACK {
 
         //If player goes over, but computer stay under 21, computer wins:
         if (plyr > 21 && cmptr <= 21) {
-            System.out.println("You went over 21, but the computer wins since they are under 21.");
+            System.out.println("You went over 21, but the computer wins since " +
+                "they are under 21.");
         }
 
         //If computer goes over, but the player stays under 21, the player wins:
         if (cmptr > 21 && plyr <= 21) {
-            System.out.println("The computer went over 21, but the human wins since they are under 21 and your profit is double your wager");
+            System.out.println("The computer went over 21, but the human wins " +
+                "since they are under 21 and your profit is double your " +
+                "wager");
             lclttl = intUserBlackJackWager * 2;
             intProfitTOTAL += lclttl;
             Casino_BANK.AddToAccountBalance(lclttl);
