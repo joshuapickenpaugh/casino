@@ -83,6 +83,10 @@ public class Casino_SLOTMACHINE {
                 //in BANK:
                 Casino_BANK.AddToAccountBalance(intDoubleProfit);
                 Casino_BANK.AddToAccountBalance(intTripleProfit);
+                
+                //Display current account balance:
+                System.out.print("Account is NOW: $");
+                System.out.println(Casino_BANK.GetAccountBalance());   
 
             }
 
@@ -94,11 +98,13 @@ public class Casino_SLOTMACHINE {
             ", and your winnings are: $" + intProfitTOTAL);
         System.out.print("You are leaving with an account balance of: $");
         System.out.println(Casino_BANK.GetAccountBalance());
+        
+        //Resets static variable (accumulator):
+        intProfitTOTAL = 0;
     }
 
     //Random number generator method:
-    public static int GetRandomNumber() {
-        
+    public static int GetRandomNumber() {        
         int randNum;
 
         Random randomNumber = new Random();
@@ -109,8 +115,7 @@ public class Casino_SLOTMACHINE {
     }
 
     //Converts random int to assigned "fruit" string:
-    public static String GetFruitAssignment(int rndnm) {
-        
+    public static String GetFruitAssignment(int rndnm) {        
         String fruit = "";
 
         switch (rndnm) {
@@ -135,14 +140,12 @@ public class Casino_SLOTMACHINE {
             default:
                 break;
         }
-
         return fruit;
     }
 
     //Compares fruit, awards any profits:
     public static int CompareTwoOfAKindAndDoubleWager(String f1, String f2,
-        String f3, int usrsltswgr) {
-        
+        String f3, int usrsltswgr) {        
         int profit = 0;
 
         //Compare fruit types (if two of a kind, double wager):
@@ -155,26 +158,28 @@ public class Casino_SLOTMACHINE {
         } else if (f2.equals(f3)) {
             System.out.println("***TWO OF A KIND, WAGER DOUBLED***");
             profit = usrsltswgr * 2;
-        } else {
-            System.out.println("No matches, nothing won.");
+        } else {            
+            int loss;
+            
+            System.out.println("No matches, you lose whatever you waged:");
+            System.out.print("Account WAS: $");
+            System.out.println(Casino_BANK.GetAccountBalance());
+            loss = intUserSlotsWager;
+            Casino_BANK.WithdrawlFromBalance(loss);          
         }
-
         //return the profit:
         return profit;
-
     }
 
     //Compares to see if all three chambers match, awards profits:
     public static int CompareThreeOfAKindAndTripleWager(String f1, String f2,
-        String f3, int usrsltswgr) {
-        
+        String f3, int usrsltswgr) {        
         int profit = 0;
 
         if (f3.equals(f1.equals(f2))) {
             System.out.println("!!!!!!!!!THREE OF A KIND, WAGER TRIPLED!!!!!!!!!");
             profit = usrsltswgr * 3;
         }
-
         //Return the profit:
         return profit;
     }
