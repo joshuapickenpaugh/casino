@@ -13,7 +13,6 @@ public class Casino_BLACKJACK {
     public static int intUserBlackJackWagerTOTAL;
 
     public static void BLACKJACK() {
-
         System.out.println("WELCOME TO BLACKJACK.");
 
         do {
@@ -80,11 +79,14 @@ public class Casino_BLACKJACK {
             ", and your winnings are: $" + intProfitTOTAL);
         System.out.print("You are leaving with an account balance of: $");
         System.out.println(Casino_BANK.GetAccountBalance());
+        
+        //Resets static variables (accumulators):
+        intProfitTOTAL = 0;
+        intUserBlackJackWagerTOTAL = 0;
     }
 
     //Dice roll method:
-    public static int RollDice() {
-        
+    public static int RollDice() {        
         int dice1;
         int dice2;
         int total;
@@ -105,7 +107,6 @@ public class Casino_BLACKJACK {
 
     //Method to find out who wins (player or computer), and award any profit:
     public static void WhoWins(int plyr, int cmptr) {
-
         int lclttl;
 
         //Player wins if they are less than or equal to 21, and great 
@@ -121,7 +122,9 @@ public class Casino_BLACKJACK {
         //Computer wins if it is less than or equal to 21 and greater than 
         //the player:
         if (cmptr <= 21 && cmptr > plyr) {
-            System.out.println("The COMPUTER wins!");
+            System.out.println("The COMPUTER wins! You lose half your wager.");
+            lclttl = intUserBlackJackWager / 2;
+            Casino_BANK.WithdrawlFromBalance(lclttl);
         }
 
         //Tied game:
@@ -131,13 +134,17 @@ public class Casino_BLACKJACK {
 
         //If player and computer goes over 21, both loose:
         if (plyr > 21 && cmptr > 21) {
-            System.out.println("You both went over, you both loose.");
+            System.out.println("You both went over, you both loose and you lose half your wager.");
+            lclttl = intUserBlackJackWager / 2;
+            Casino_BANK.WithdrawlFromBalance(lclttl);
         }
 
         //If player goes over, but computer stay under 21, computer wins:
         if (plyr > 21 && cmptr <= 21) {
             System.out.println("You went over 21, but the computer wins since " +
-                "they are under 21.");
+                "they are under 21. You lose half your wager.");
+            lclttl = intUserBlackJackWager / 2;
+            Casino_BANK.WithdrawlFromBalance(lclttl);
         }
 
         //If computer goes over, but the player stays under 21, the player wins:
