@@ -5,15 +5,12 @@ import java.util.Random;
 public class Casino_SLOTMACHINE {
     //Local variable declarations:
     private static int intUserChoice;
-
     private static int intRandNum1;
     private static int intRandNum2;
     private static int intRandNum3;
-
     private static String strFruit1;
     private static String strFruit2;
     private static String strFruit3;
-
     private static int intDoubleProfit;
     private static int intTripleProfit;
     private static int intProfitTOTAL;
@@ -32,7 +29,7 @@ public class Casino_SLOTMACHINE {
         System.out.println("How much do you wish to wager?");
         intUserSlotsWager = keyboard.nextInt();
         Casino_BANK.WithdrawlFromBalance(intUserSlotsWager);
-        System.out.print("You have waged $" + intUserSlotsWager + ", with a total player account of $");
+        System.out.print("You have waged $" + intUserSlotsWager + ", with a remaining player account of $");
         System.out.println(Casino_BANK.GetAccountBalance());
 
         do {
