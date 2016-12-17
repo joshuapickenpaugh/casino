@@ -53,10 +53,12 @@ public class Casino_MAIN {
                 } while (Casino_BANK.GetAccountBalance() < 20);
             }
             //Game selection and user input:
+            System.out.println("_________________________");
             System.out.println("Please choose your game: ");
             System.out.println("PRESS '1' for BLACKJACK");
             System.out.println("PRESS '2' for SLOT MACHINE");
             System.out.println("PRESS 'Q' to QUIT");
+            System.out.println("_________________________");
 
             //accepts a char value:
             chrUserSelection = keyboard.next().charAt(0);
