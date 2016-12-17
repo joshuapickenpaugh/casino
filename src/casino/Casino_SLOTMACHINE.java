@@ -26,7 +26,7 @@ public class Casino_SLOTMACHINE {
         Scanner keyboard = new Scanner(System.in);
 
         //Asks player how much they wish to wager:
-        System.out.println("How much do you wish to wager?");
+        System.out.println("How much do you wish to wage this slots session?");
         intUserSlotsWager = keyboard.nextInt();
         Casino_BANK.WithdrawlFromBalance(intUserSlotsWager);
         System.out.print("You have waged $" + intUserSlotsWager + ", with a " +
