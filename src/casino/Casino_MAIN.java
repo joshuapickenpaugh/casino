@@ -20,7 +20,7 @@ public class Casino_MAIN {
         Scanner keyboard = new Scanner(System.in);
 
         //Creates BANK object:
-        Casino_BANK userAccount = new Casino_BANK();
+//        Casino_BANK userAccount = new Casino_BANK();
 
         //Gets user's name, and then greets the user:
         System.out.print("Please enter your name: ");
@@ -32,9 +32,9 @@ public class Casino_MAIN {
         do {
             intUserDeposit = keyboard.nextInt();
             if (intUserDeposit >= 20 && intUserDeposit <= 1000) {
-                userAccount.AddToAccountBalance(intUserDeposit);
+                Casino_BANK.AddToAccountBalance(intUserDeposit);
                 System.out.print("Your account has been created, starting at: $");
-                System.out.println(userAccount.GetAccountBalance());
+                System.out.println(Casino_BANK.GetAccountBalance());
             } else if (intUserDeposit < 20 || intUserDeposit > 1000) {
                 System.out.print("TO REPEAT: Please deposit between $20 and $1000: ");
             }
@@ -43,14 +43,14 @@ public class Casino_MAIN {
 
         do {
             //If account below $20, ask player to add to it to bring it up above $20:
-            if (userAccount.GetAccountBalance() < 20) {
+            if (Casino_BANK.GetAccountBalance() < 20) {
                 do {
                     System.out.print("Your account is below $20, it is at: ");
-                    System.out.println(userAccount.GetAccountBalance());
+                    System.out.println(Casino_BANK.GetAccountBalance());
                     System.out.println("Please deposit enough funds to bring it above $20.");
                     intUserDeposit = keyboard.nextInt();
-                    userAccount.AddToAccountBalance(intUserDeposit);
-                } while (userAccount.GetAccountBalance() < 20);
+                    Casino_BANK.AddToAccountBalance(intUserDeposit);
+                } while (Casino_BANK.GetAccountBalance() < 20);
             }
             //Game selection and user input:
             System.out.println("Please choose your game: ");
@@ -65,11 +65,16 @@ public class Casino_MAIN {
                 case '1':
                     Casino_BLACKJACK.BLACKJACK();
                     System.out.println("Welcome back to the lobby.");
+                    System.out.print("Your account balance is: $");
+                    System.out.println(Casino_BANK.GetAccountBalance());
+                    
                     break;
 
                 case '2':
                     Casino_SLOTMACHINE.SLOTMACHINE();
                     System.out.println("Welcome back to the lobby.");
+                    System.out.print("Your account balance is: $");
+                    System.out.println(Casino_BANK.GetAccountBalance());
                     break;
 
                 case 'q':
@@ -81,8 +86,7 @@ public class Casino_MAIN {
         } while (bolDoLoopControl == true);
 
         System.out.print("You end your tenure at the casino with : $");
-        System.out.println(userAccount.GetAccountBalance());
-
+        System.out.println(Casino_BANK.GetAccountBalance());
 
     }
 
