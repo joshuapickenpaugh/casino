@@ -24,7 +24,7 @@ public class Casino_BLACKJACK {
             Scanner keyboard = new Scanner(System.in);
 
             //Asks player how much they wish to wager:
-            System.out.println("How much do you wish to wager?");
+            System.out.println("How much do you wish to wage this hand?");
             intUserBlackJackWager = keyboard.nextInt();
             intUserBlackJackWagerTOTAL += intUserBlackJackWager;
             Casino_BANK.WithdrawlFromBalance(intUserBlackJackWager);
@@ -39,7 +39,8 @@ public class Casino_BLACKJACK {
                 intComputerPoints = RollDice();
                 intComputerTotal += intComputerPoints;
 
-                System.out.println("Press 1 to roll, press 2 to QUIT");
+                System.out.println("Press 1 to roll, press 2 to stop rolling "
+                        + "and compare with computer.");
 
                 intUserChoice = keyboard.nextInt();
 
@@ -117,6 +118,8 @@ public class Casino_BLACKJACK {
             lclttl = intUserBlackJackWager * 2;
             intProfitTOTAL += lclttl;
             Casino_BANK.AddToAccountBalance(lclttl);
+            System.out.print("Your account balance is now: $");
+            System.out.println(Casino_BANK.GetAccountBalance());
         }
 
         //Computer wins if it is less than or equal to 21 and greater than 
@@ -125,6 +128,8 @@ public class Casino_BLACKJACK {
             System.out.println("The COMPUTER wins! You lose half your wager.");
             lclttl = intUserBlackJackWager / 2;
             Casino_BANK.WithdrawlFromBalance(lclttl);
+            System.out.print("Your account balance is now: $");
+            System.out.println(Casino_BANK.GetAccountBalance());
         }
 
         //Tied game:
@@ -137,6 +142,8 @@ public class Casino_BLACKJACK {
             System.out.println("You both went over, you both loose and you lose half your wager.");
             lclttl = intUserBlackJackWager / 2;
             Casino_BANK.WithdrawlFromBalance(lclttl);
+            System.out.print("Your account balance is now: $");
+            System.out.println(Casino_BANK.GetAccountBalance());
         }
 
         //If player goes over, but computer stay under 21, computer wins:
@@ -145,16 +152,20 @@ public class Casino_BLACKJACK {
                 "they are under 21. You lose half your wager.");
             lclttl = intUserBlackJackWager / 2;
             Casino_BANK.WithdrawlFromBalance(lclttl);
+            System.out.print("Your account balance is now: $");
+            System.out.println(Casino_BANK.GetAccountBalance());
         }
 
         //If computer goes over, but the player stays under 21, the player wins:
         if (cmptr > 21 && plyr <= 21) {
             System.out.println("The computer went over 21, but the human wins " +
                 "since they are under 21 and your profit is double your " +
-                "wager");
+                "wager.");
             lclttl = intUserBlackJackWager * 2;
             intProfitTOTAL += lclttl;
             Casino_BANK.AddToAccountBalance(lclttl);
+            System.out.print("Your account balance is now: $");
+            System.out.println(Casino_BANK.GetAccountBalance());
         }
     }
 }
