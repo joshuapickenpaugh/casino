@@ -66,6 +66,7 @@ public class Casino_MAIN {
             //accepts a char value:
             chrUserSelection = keyboard.next().charAt(0);
 
+            //Game selection, and return greeting to player after game has ended:
             switch (chrUserSelection) {
                 case '1':
                     Casino_BLACKJACK.BLACKJACK();
@@ -92,6 +93,7 @@ public class Casino_MAIN {
             }
         } while (bolDoLoopControl == true);
 
+        //Final goodbye to player when leaves casino simulation:
         System.out.print("You end your tenure at the casino with : $");
         System.out.println(Casino_BANK.GetAccountBalance());
 
