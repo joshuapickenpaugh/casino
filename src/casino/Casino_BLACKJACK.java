@@ -70,10 +70,10 @@ public class Casino_BLACKJACK {
 
         } while (intUserChoice2 == 1);
         
-        System.out.print("You are now leaving the blackjack table. You waged $" + intUserBlackJackWagerTOTAL +
-            ", with an account balance of $");
+        System.out.println("You are now leaving the blackjack table. You waged $" + intUserBlackJackWagerTOTAL +
+            ", and your winnings are: $" + intProfitTOTAL);
+        System.out.print("You are leaving with an account balance of: $");
         System.out.println(Casino_BANK.GetAccountBalance());
-        System.out.println("Your winnings are: $" + intProfitTOTAL);
 
 
     }
