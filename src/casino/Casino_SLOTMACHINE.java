@@ -175,8 +175,8 @@ public class Casino_SLOTMACHINE {
     public static int CompareThreeOfAKindAndTripleWager(String f1, String f2,
         String f3, int usrsltswgr) {        
         int profit = 0;
-
-        if (f3.equals(f1.equals(f2))) {
+        
+        if (f1.equals(f2) && f2.equals(f3)) {
             System.out.println("!!!!!!!!!THREE OF A KIND, WAGER TRIPLED!!!!!!!!!");
             profit = usrsltswgr * 3;
         }
